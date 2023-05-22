@@ -163,7 +163,7 @@ class Game():
 
         #self.speedometer.draw(self.screen, self.car.speed * 1.5)
 
-        self.camera_group.temp_draw()
+        #self.camera_group.temp_draw()
 
         pygame.display.flip()
 
