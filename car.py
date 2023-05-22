@@ -1,11 +1,13 @@
 import pygame, sys
-from pygame.locals import *
+import pygame.mixer
 from settings import *
 from utils import *
+import wave
 
 class Car(pygame.sprite.Sprite):
-    def __init__(self, image, screen, max_vel, accel, decel, friction, angle_accel, angle_friction, car_width, car_height):
+    def __init__(self, image, screen, max_vel, accel, decel, friction, angle_accel, angle_friction, car_width, car_height, car_name):
         pygame.sprite.Sprite.__init__(self)
+        self.car_name = car_name
         self.image = pygame.image.load(get_image_path(image)).convert_alpha()
         self.image = pygame.transform.scale(self.image, (car_width, car_height))
         self.rect = self.image.get_rect()
@@ -125,23 +127,3 @@ class Car(pygame.sprite.Sprite):
 
         # draw hitbox
         pygame.draw.rect(screen, (0, 0, 255), self.hitbox.move(offset[0], offset[1]), 2)
-              
-
-# test code
-if __name__ == "__main__":
-    pygame.init()
-    screen = pygame.display.set_mode(SCREENRECT.size)
-    clock = pygame.time.Clock()
-    car = Car("car_1.png", screen, 10, 10, 0.5, 0.98, 0.5, 0.9, 420, 400)
-    while True:
-        dt = clock.tick(FPS) / 1000
-        for event in pygame.event.get():
-            if event.type == QUIT:
-                pygame.quit()
-                sys.exit()
-        screen.fill((0, 0, 0))
-        car.events()
-        car.update(dt)
-        car.draw(screen)
-        car.draw_debug(screen)
-        pygame.display.flip()

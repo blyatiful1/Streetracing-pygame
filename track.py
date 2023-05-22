@@ -83,7 +83,10 @@ class Track():
         return surface
     
     def is_on_track(self, rect):
-        if self.road_surface.get_at((int(rect.centerx), int(rect.centery))) == (166,201,203,255):
-            return True
-        else:
+        try:
+            if self.road_surface.get_at((int(rect.centerx), int(rect.centery))) == (166,201,203,255):
+                return True
+            else:
+                return False
+        except IndexError:
             return False

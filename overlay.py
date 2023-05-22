@@ -18,16 +18,26 @@ class Overlay:
         pos = self.font.render("Pos: " + str(target.rect.center), True, (0, 0, 0))
         self.display.blit(pos, (0, 20))
 
-    def run(self, clock, target):
+    def draw_speed(self, speed):
+        speed = self.font.render("Speed: " + str(int(speed * 1.5)) + "km/h", True, (255, 255, 255))
+        self.display.blit(speed, (SCREENRECT.width - 120, 0))
+
+    def draw_now_playing(self):
+        now_playing = self.font.render("Now playing: " + str(MUSIC), True, (255, 255, 255))
+        self.display.blit(now_playing, (SCREENRECT.width / 2 - now_playing.get_width() / 2, 0))
+
+    def run(self, target):
         if self.win:
             self.time = time.time() - self.start_time
             self.draw_win_screen()
 
-            time.sleep(3)
+            time.sleep(2)
             self.win = False
         else:
-            self.draw_fps(clock)
-            self.draw_pos(target)
+            #self.draw_fps(clock)
+            #+self.draw_pos(target)
+            self.draw_speed(target.speed)
+            self.draw_now_playing()
 
     def start_countdown(self):
         self.display.fill((0, 0, 0))
@@ -43,10 +53,10 @@ class Overlay:
 
     def draw_win_screen(self):
         self.display.fill((0, 0, 0))
-        win = self.font.render("You win!", True, (255, 255, 255))
+        win = self.font.render("Race finished!", True, (255, 255, 255))
         win_rect = win.get_rect(center=(SCREENRECT.width / 2, SCREENRECT.height / 2))
 
-        time_text = self.font.render("Time: " + str(round(self.time, 2)), True, (255, 255, 255))
+        time_text = self.font.render("Time: " + str(round(self.time, 2)) + " sec", True, (255, 255, 255))
         time_rect = time_text.get_rect(center=(SCREENRECT.width / 2, SCREENRECT.height / 2 + 50))
 
         self.display.blit(time_text, time_rect)
@@ -55,7 +65,10 @@ class Overlay:
 
     def reset_start_time(self):
         self.start_time = time.time()
-        
+
+#--------------#
+# Experimental #
+#--------------#
 class Speedometer:
     def __init__(self, x, y, radius):
         self.x = x

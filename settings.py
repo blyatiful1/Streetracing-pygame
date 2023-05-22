@@ -3,7 +3,7 @@ import pygame, os, math, sys
 pygame.init()
 
 ## Game settings
-FONT = pygame.font.Font("fonts/CompassPro.ttf", 20)
+FONT = pygame.font.Font("fonts/m6x11.ttf", 20)
 SCREENRECT = pygame.Rect(0, 0, 1280, 720)
 CLOCK = pygame.time.Clock()
 FPS = 60
@@ -24,3 +24,6 @@ blue = (0, 0, 255)
 yellow = (255, 255, 0)
 cyan = (0, 255, 255)
 magenta = (255, 0, 255)
+
+## Music
+MUSIC = "Spooky scary skeletons (Eurobeat remix)"
