@@ -132,15 +132,15 @@ class Game():
                 if ("Donda TSX", 2) not in self.player.cars:
                     self.player.add_car(("Donda TSX", 2))
                     self.menu.add_car(("Donda TSX", 2))
-                    self.menu.init_menus()
                     self.player.update_player()
 
             if self.player.get_experience() >= 500:
                 if ("Yotota Yiras", 3) not in self.player.cars:
                     self.player.add_car(("Yotota Yiras", 3))
                     self.menu.add_car(("Yotota Yiras", 3))
-                    self.menu.init_menus()
                     self.player.update_player()
+
+            self.menu.init_menus()
 
             print(self.player)
             self.player.update_player()
