@@ -14,7 +14,7 @@ class Game():
     def __init__(self):
         pygame.init()
         pygame.mixer.init()
-        pygame.display.set_caption("RacingJ")
+        pygame.display.set_caption("Racing J")
 
         self.screen = pygame.display.set_mode(SCREENRECT.size)
         self.clock = CLOCK

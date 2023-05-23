@@ -8,6 +8,7 @@ class Menu:
         self.restart_requested = False
         self.screen = screen
         self.player = Player()
+        self.player.load()
 
         self.cars = []
 
@@ -19,7 +20,7 @@ class Menu:
         self.theme.widget_font_size = 26
 
     def init_menus(self):
-        self.menu = pygame_menu.Menu("RacingJ", SCREENRECT.width, SCREENRECT.height, theme=self.theme)
+        self.menu = pygame_menu.Menu("Racing J", SCREENRECT.width, SCREENRECT.height, theme=self.theme)
         self.menu.add.button("Play", self.start_the_game)
         self.menu.add.dropselect("Cars", self.cars, onchange=self.car, 
                                         placeholder="Select a car", 
@@ -130,3 +131,12 @@ class Menu:
 
     def run(self):
         self.menu.mainloop(self.screen)
+
+# test menu
+if __name__ == "__main__":
+    pygame.init()
+    pygame.display.set_caption("RacingJ")
+    screen = pygame.display.set_mode(SCREENRECT.size)
+    menu = Menu(screen)
+    menu.init_menus()
+    menu.run()
