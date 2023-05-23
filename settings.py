@@ -3,7 +3,7 @@ import pygame, os, math, sys
 pygame.init()
 
 ## Game settings
-FONT = pygame.font.Font("fonts/m6x11.ttf", 20)
+FONT = pygame.font.Font("fonts/m6x11.ttf", 30)
 SCREENRECT = pygame.Rect(0, 0, 1280, 720)
 CLOCK = pygame.time.Clock()
 FPS = 60

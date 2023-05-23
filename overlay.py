@@ -20,7 +20,7 @@ class Overlay:
 
     def draw_speed(self, speed):
         speed = self.font.render("Speed: " + str(int(speed * 1.5)) + "km/h", True, (255, 255, 255))
-        self.display.blit(speed, (SCREENRECT.width - 120, 0))
+        self.display.blit(speed, (0, SCREENRECT.height - speed.get_height()))
 
     def draw_now_playing(self):
         now_playing = self.font.render("Now playing: " + str(MUSIC), True, (255, 255, 255))

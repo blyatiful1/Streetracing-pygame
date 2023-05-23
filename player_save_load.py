@@ -98,9 +98,6 @@ class Player():
     def set_money(self, amount):
         self.money = amount
 
-    def set_cars(self, cars):
-        self.cars = cars
-
     def set_upgrades(self, upgrades):
         self.upgrades = upgrades
 
@@ -119,7 +116,7 @@ class Player():
 if __name__ == "__main__":
     player = Player()
     player.reset()
-    player.add_money(1000)
+    player.set_money(1000)
     player.add_car(("Dazda RX 7", 1))
 
     player.save()
